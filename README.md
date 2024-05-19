@@ -1,5 +1,7 @@
-# tc3002b-ia
+# TC3002B-IA
 José Manuel Medina - A01706212
+
+**IMPORTANTE:** El dataset se encuntra en la siguiente carpeta de Google Drive: https://drive.google.com/drive/folders/1YqglgSbqy-tzIgb09LAQ0RlwOYUm0TtO?usp=sharing
 
 # Modelo de detección de sonrisas en caras humanas
 Utilizando inteligencia artificial, se busca crear un modelo que pueda reconocer si una persona está
@@ -32,5 +34,3 @@ para hacer la separación inicial de `train` y `test`, dando un total de 240, qu
 Además de la separación, se aplicaron técnicas de escalamiento _(rescale, rotation_range, width_shift_range, height_shift_range, shear_range, zoom_range, horizontal_flip)_
 para así proporcionarle al modelo más datos con que entrenar sin alterar el rendimiento de las imágenes.
 Las imágenes que fueron sujetas a estas técnicas se encuentran en la carpeta `augmented`.
-
-**IMPORTANTE:** El dataset se encuntra en la siguiente carpeta de Google Drive: https://drive.google.com/drive/folders/1YqglgSbqy-tzIgb09LAQ0RlwOYUm0TtO?usp=sharing
