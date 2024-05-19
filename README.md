@@ -24,7 +24,7 @@ Dentro de la carpeta `model` se crearon las carpetas `train` y `test` con las re
 dataset: `smile` y `non_smile`. 
 
 Se hizo una división de 80-20, es decir, 80% de los datos se destinaron a `train` y el
-20% restante a `test`, tal como se recomienda en la infografía _"Building the Machine Learning Model"_ de Nantasenanat, C. (2020).
+20% restante a `test`, tal como se recomienda en la infografía _"Building the Machine Learning Model"_ de Nantasenamat, C. (2020).
 
 Dado a que las imágenes se encuentran acomodadas por orden alfabético (las imágenes tienen el nombre de la persona), se tomaron los primeros 120 elementos de `smile` y `non_smile`
 para hacer la separación inicial de `train` y `test`, dando un total de 240, que es ≈20% del total de elementos (1,203).
