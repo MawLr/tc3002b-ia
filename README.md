@@ -11,7 +11,7 @@ Hay dos clases:
 
 ## Descripción del Dataset
 El dataset de sonrizas se obtuvo de Kaggle, siendo este el [Smiling or Not | Face Data](https://www.kaggle.com/datasets/chazzer/smiling-or-not-face-data) por el autor Chazzer.
-Dentro del dataset se encuentran las carpetas:
+Dentro del dataset se encuentran las siguientes carpetas:
 - `smile` - 600 imágenes de 64x64 px
 - `non_smile` - 603 imágenes de 64x64 px
 - `test` - ≈12,000 ±100 imágenes, _sin clasificar_ de 64x64 px
