@@ -33,15 +33,13 @@ para hacer la separación inicial de `train` y `test`, dando un total de 240, qu
 
 Con los datos de `test` se hizo una separación más, la mitad de las imagenes dentro de esta carpeta se destinó a `validation`, quedando así una separación de 80% `train`, 10% `test` y 10% `validation`.
 
-Además de la separación, se aplicaron las siguientes técnicas de escalamiento: _rescale, rotation_range, width_shift_range, height_shift_range, shear_range, zoom_range, horizontal_flip_
+Además de la separación, se aplicaron las siguientes técnicas de escalamiento: _rescale, rotation_range, width_shift_range, shear_range, horizontal_flip_
 para así proporcionarle al modelo más datos con que entrenar sin alterar el rendimiento de las imágenes.
 
 - rescale: Lo utilizamos para convertir los píxeles de las imágenes de rango `[0,255] a [0,1]`. Esto nos es de gran utilidad para normalizar las entradas y evitar posibles sesgos en los conteos de píxeles de cada imagen.
 - rotation_range: Como lo dice su nombre, es un rango de rotación en ángulos, lo que significa que rota las entradas, ampliando los escenarios con los que el modelo se puede topar. En este caso se utilizó un rango de `40 grados` porque más de esto hace que se pueda alterar el patrón de las sonrisas en las cara y podría causar malas interpretaciones de las entradas.
-- width_shift_range: Con esto desplazamos la imagen en el eje X, tanto a la izquierda como a la derecha dependiendo su valor. En nuestro caso el valor es de `0.15`, ya que el tamaño de la imagen es demasiado pequeño y un desplazamiento mayor hace que se pierda la expresión del cuadro.
-- height_shift_range: Muy parecido a `width_shift_range` pero para el eje Y. El valor es también de `0.15` por la misma razón dada en el punto anterior.
+- width_shift_range: Con esto desplazamos la imagen en el eje X, tanto a la izquierda como a la derecha dependiendo su valor. En nuestro caso el valor es de `0.1`, ya que el tamaño de la imagen es demasiado pequeño y un desplazamiento mayor hace que se pierda la expresión del cuadro.
 - shear_range: Conocido en español como cizallamiento o mapeo de corte. Se podría decir que es un estiramiento de la imagen como si fuera jalada de dos puntos opuestos cruzados. En este caso el valor es de `0.2` nuevamente por las limitaciones de tamaño de las imagenes.
-- zoom_range: Rango de enfoque, tiene un valor de `0.05` pare evitar perder facciones de las caras.
 - horizontal_flip: Un espejeo de las imagenes, en nuestro caso está puesto como `True`.
 
 ## Modelo Inicial
@@ -54,7 +52,7 @@ El modelo inicial es un modelo Secuencial Binario y consta de siete capas:
 
 Se optó por usar una arquitectura similar a una CNN con base en el artículo de Guo, X. & Polaina, L. F. (2018) Igualmente, el uso de una capa Conv2D seguida de una MaxPool2D con los algoritmos de activación `ReLu` fue tomado del artículo de Malallah, F. et al. (2020). La última capa densa utiliza el algoritmo de activación `sigmoid` dado a que éste nos retorna valores entre 1 y 0, por lo que es de gran utilidad en clasificación binaria.
 
-### Métricas del modelo
+### Métricas y consideraciones
 Para este modelo inicial utilizamos:
 - Binary Cross-Entropy: Utilizada como función de _Loss_. Mide la disimilitud entre los _labels_ actuales y las probabilidades predichas en la clase positiva (1 pos. 0 neg.) y penaliza las predicciones que tienen confiabilidad pero son incorrectas. El concepto puede aplicar para más de dos clases (_Categorical_) pero en nuestro caso es ideal el utilizar la función binaria.
 - Accuracy: Método para medir el desempeño del modelo. Cuenta las predicciones donde el valor predicho es igual al verdadero valor.
@@ -62,9 +60,15 @@ Para este modelo inicial utilizamos:
 - RMSProp: Método de optimización. _Root Mean Square Propagation_ por sus siglas en inglés. Se decidió utilizar este optimizador con base en la publicación de López-Sánchez, M. et al. (2021) que compara el desempeño de SGD, RMSProp y Adam. Cabe mencionar que RMSProp fue el que tuvo resultados intermedios y Adam fue el que tuvo mejor desempeño, pero para este primer modelo utilizamos RMSProp como punto de partida.
 
 ### Evaluación inicial:
+El modelo inicial nos arroja un _Accuracy_ de 87% y un Loss de 0.3284. A primera vista, y con base en lo reportado por Guo, X. & Polaina, L. F. (2018), nuestro modelo tiene un porcentaje de _Accuracy_ comparable con un modelo que utiliza _Raw Pixels_ como _Features_ y un _Classifier_ SVM, ya que este es de ±84%. Cabe mencionar que para futuras versiones se debe considerar obtener el _Validation Accuracy_ y _Validation Loss_ de nuestro modelo para así determinar que tan verídica es la información preliminar y saber si existe _over_ o _under fitting_ y tomar acciones al respecto.
 
+#### Propuestas para el siguiente modelo
+- El modelo de Guo, X. & Polaina, L. F. (2018) propone utilizar una capa VGG-16, sería interesante añadirla al modelo y observar cómo se comporta.
+- Cambiar el optimizador por Adam
 
 ## Referencias:
+-Nantasenamat, C. (2020). _Building the Machine Learning Model_. Recuperado de: https://towardsdatascience.com/how-to-build-a-machine-learning-model-439ab8fb3fb1
+
 - Guo, X. & Polaina, L. F. (2018). _Smile Detection in the Wild Based on Transfer Learning_. http://dx.doi.org/10.1109/FG.2018.00107
 
 - Malallah, F., Al-Jubouri, A., Sabaawi, A., Shareef, B., Saeed, M. & Yasen, K. (2020). _Smiling and Non-smiling Emotion Recognition Based on Lower-half Face using Deep-Learning as Convolutional Neural Network_. http://dx.doi.org/10.4108/eai.28-6-2020.2298175
