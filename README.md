@@ -52,7 +52,7 @@ El modelo inicial es un modelo Secuencial Binario y consta de siete capas:
 - 1 capa Densa de 64 nodos con activación `ReLu`
 - 1 capa Densa de 1 nodo (ya que es un modelo binario) con activación `sigmoid`
 
-Se optó por usar una arquitectura similar a una CNN con base en el artículo de Guo, X. & Polaina, L. F. (2018). _Smile Detection in the Wild Based on Transfer Learning_. Igualmente, el uso de una capa Conv2D seguida de una MaxPool2D con los algoritmos de activación `ReLu` fue tomado del artículo de Malallah, F et al. (2020). _Smiling and Non-smiling Emotion Recognition Based on Lower-half Face using Deep-Learning as Convolutional Neural Network_. La última capa densa utiliza el algoritmo de activación `sigmoid` dado a que éste nos retorna valores entre 1 y 0, por lo que es de gran utilidad en clasificación binaria.
+Se optó por usar una arquitectura similar a una CNN con base en el artículo de Guo, X. & Polaina, L. F. (2018) Igualmente, el uso de una capa Conv2D seguida de una MaxPool2D con los algoritmos de activación `ReLu` fue tomado del artículo de Malallah, F. et al. (2020). La última capa densa utiliza el algoritmo de activación `sigmoid` dado a que éste nos retorna valores entre 1 y 0, por lo que es de gran utilidad en clasificación binaria.
 
 ### Métricas del modelo
 Para este modelo inicial utilizamos:
@@ -67,4 +67,4 @@ Para este modelo inicial utilizamos:
 ## Referencias:
 - Guo, X. & Polaina, L. F. (2018). _Smile Detection in the Wild Based on Transfer Learning_. http://dx.doi.org/10.1109/FG.2018.00107
 
-- Malallah, F. & Al-Jubouri, A. & Sabaawi, A. & Shareef, B. & Saeed, M. & Yasen, K. (2020). _Smiling and Non-smiling Emotion Recognition Based on Lower-half Face using Deep-Learning as Convolutional Neural Network_. 10.4108/eai.28-6-2020.2298175. 
+- Malallah, F. & Al-Jubouri, A. & Sabaawi, A. & Shareef, B. & Saeed, M. & Yasen, K. (2020). _Smiling and Non-smiling Emotion Recognition Based on Lower-half Face using Deep-Learning as Convolutional Neural Network_. http://dx.doi.org/10.4108/eai.28-6-2020.2298175
