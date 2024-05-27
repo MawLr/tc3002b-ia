@@ -56,10 +56,10 @@ Se optó por usar una arquitectura similar a una CNN con base en el artículo de
 
 ### Métricas del modelo
 Para este modelo inicial utilizamos:
-- Binary Cross-Entropy
-- Accuracy
-- Loss
-- RMSProp
+- Binary Cross-Entropy: Utilizada como función de _Loss_. Mide la disimilitud entre los _labels_ actuales y las probabilidades predichas en la clase positiva (1 pos. 0 neg.) y penaliza las predicciones que tienen confiabilidad pero son incorrectas. El concepto puede aplicar para más de dos clases (_Categorical_) pero en nuestro caso es ideal el utilizar la función binaria.
+- Accuracy: Método para medir el desempeño del modelo. Cuenta las predicciones donde el valor predicho es igual al verdadero valor.
+- Loss: Suma de errores cometidos por cada muestra en el set de entrenamiento. Toma en cuenta las probabilidades o incertidumbre de una predicción basada en qué tanto varía la predicción con el valor real.
+- RMSProp: Método de optimización. _Root Mean Square Propagation_ por sus siglas en inglés.
 
 ### Evaluación inicial:
 
