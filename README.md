@@ -47,7 +47,7 @@ para así proporcionarle al modelo más datos con que entrenar sin alterar el re
 ## Modelo Inicial
 El modelo inicial es un modelo Secuencial Binario y consta de siete capas: 
 - 2 capas Conv2D utilizando `ReLu` como algoritmo de activación
-- 2 capas MaxPool2D metidas entre cada Conv2D utilizando `ReLu` como algoritmo de activación
+- 2 capas MaxPool2D metidas entre cada Conv2D
 - 1 capa de Flatten
 - 1 capa Densa de 64 nodos con activación `ReLu`
 - 1 capa Densa de 1 nodo (ya que es un modelo binario) con activación `sigmoid`
