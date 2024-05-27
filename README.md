@@ -59,7 +59,7 @@ Para este modelo inicial utilizamos:
 - Binary Cross-Entropy: Utilizada como función de _Loss_. Mide la disimilitud entre los _labels_ actuales y las probabilidades predichas en la clase positiva (1 pos. 0 neg.) y penaliza las predicciones que tienen confiabilidad pero son incorrectas. El concepto puede aplicar para más de dos clases (_Categorical_) pero en nuestro caso es ideal el utilizar la función binaria.
 - Accuracy: Método para medir el desempeño del modelo. Cuenta las predicciones donde el valor predicho es igual al verdadero valor.
 - Loss: Suma de errores cometidos por cada muestra en el set de entrenamiento. Toma en cuenta las probabilidades o incertidumbre de una predicción basada en qué tanto varía la predicción con el valor real.
-- RMSProp: Método de optimización. _Root Mean Square Propagation_ por sus siglas en inglés.
+- RMSProp: Método de optimización. _Root Mean Square Propagation_ por sus siglas en inglés. Se decidió utilizar este optimizador con base en la publicación de López-Sánchez, M. et al. (2021) que compara el desempeño de SGD, RMSProp y Adam. Cabe mencionar que RMSProp fue el que tuvo resultados intermedios y Adam fue el que tuvo mejor desempeño, pero para este primer modelo utilizamos RMSProp como punto de partida.
 
 ### Evaluación inicial:
 
@@ -67,4 +67,6 @@ Para este modelo inicial utilizamos:
 ## Referencias:
 - Guo, X. & Polaina, L. F. (2018). _Smile Detection in the Wild Based on Transfer Learning_. http://dx.doi.org/10.1109/FG.2018.00107
 
-- Malallah, F. & Al-Jubouri, A. & Sabaawi, A. & Shareef, B. & Saeed, M. & Yasen, K. (2020). _Smiling and Non-smiling Emotion Recognition Based on Lower-half Face using Deep-Learning as Convolutional Neural Network_. http://dx.doi.org/10.4108/eai.28-6-2020.2298175
+- Malallah, F., Al-Jubouri, A., Sabaawi, A., Shareef, B., Saeed, M. & Yasen, K. (2020). _Smiling and Non-smiling Emotion Recognition Based on Lower-half Face using Deep-Learning as Convolutional Neural Network_. http://dx.doi.org/10.4108/eai.28-6-2020.2298175
+
+- López-Sánchez, M., Hernández-Torruco, J., Hernández-Ocaña, B. & Chávez-Bosquez, O. (2021, Febrero 10). Comparative Study of Optimizers in the Training of a Convolutional Neural Network in a Binary Recognition Model. _Research in Computing Science, 150(4)_, 73-82. https://rcs.cic.ipn.mx/2021_150_4/Comparative%20Study%20of%20Optimizers%20in%20the%20Training%20of%20a%20Convolutional%20Neural%20Network.pdf   
