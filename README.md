@@ -62,12 +62,13 @@ Para este modelo inicial utilizamos:
 ### Evaluación inicial:
 El modelo inicial nos arroja un _Accuracy_ de 87% y un Loss de 0.3284. A primera vista, y con base en lo reportado por Guo, X. & Polaina, L. F. (2018), nuestro modelo tiene un porcentaje de _Accuracy_ comparable con un modelo que utiliza _Raw Pixels_ como _Features_ y un _Classifier_ SVM, ya que este es de ±84%.
 
-Considerando que el _validation loss_ es altísimo (29.195), podemos inferir que puede existir _overfitting_, esto se podría mitigar agregando alguna capa de dropout (como lo mencionan los dos artículos citados) y/o agregar capas de regularización. Es interestante mencionar que el validation accuracy no está tan descabeyado y que _test accuracy_ (93.3%) también muestra buen prospecto.
+Considerando que el _validation loss_ es altísimo (29.195) y el _train loss_ también (16.70), podemos inferir que puede existir _underfitting_, esto se podría mitigar agregando más nodos o más capas densas. igualmente podríamos entrenar el modelo durante más épocas. Es interestante mencionar que el _validation accuracy_ (94%) no está tan descabeyado y que _test accuracy_ (93.3%) también muestra buen prospecto.
 
 #### Propuestas para el siguiente modelo
 - El modelo de Guo, X. & Polaina, L. F. (2018) propone utilizar una capa VGG-16, sería interesante añadirla al modelo y observar cómo se comporta
 - Cambiar RMSProp por Adam
-- Agregar capas de dropout y/o regularización
+- Agregar más nodos y/o más capas densas
+- Entrenar durante más épocas
 
 ## Referencias:
 - Nantasenamat, C. (2020). _Building the Machine Learning Model_. Recuperado de: https://towardsdatascience.com/how-to-build-a-machine-learning-model-439ab8fb3fb1
