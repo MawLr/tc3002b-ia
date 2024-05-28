@@ -60,11 +60,14 @@ Para este modelo inicial utilizamos:
 - RMSProp: Método de optimización. _Root Mean Square Propagation_ por sus siglas en inglés. Se decidió utilizar este optimizador con base en la publicación de López-Sánchez, M. et al. (2021) que compara el desempeño de SGD, RMSProp y Adam. Cabe mencionar que RMSProp fue el que tuvo resultados intermedios y Adam fue el que tuvo mejor desempeño, pero para este primer modelo utilizamos RMSProp como punto de partida.
 
 ### Evaluación inicial:
-El modelo inicial nos arroja un _Accuracy_ de 87% y un Loss de 0.3284. A primera vista, y con base en lo reportado por Guo, X. & Polaina, L. F. (2018), nuestro modelo tiene un porcentaje de _Accuracy_ comparable con un modelo que utiliza _Raw Pixels_ como _Features_ y un _Classifier_ SVM, ya que este es de ±84%. Cabe mencionar que para futuras versiones se debe considerar obtener el _Validation Accuracy_ y _Validation Loss_ de nuestro modelo para así determinar que tan verídica es la información preliminar y saber si existe _over_ o _under fitting_ y tomar acciones al respecto.
+El modelo inicial nos arroja un _Accuracy_ de 87% y un Loss de 0.3284. A primera vista, y con base en lo reportado por Guo, X. & Polaina, L. F. (2018), nuestro modelo tiene un porcentaje de _Accuracy_ comparable con un modelo que utiliza _Raw Pixels_ como _Features_ y un _Classifier_ SVM, ya que este es de ±84%.
+
+Considerando que el _validation loss_ es altísimo (29.195), podemos inferir que puede existir _overfitting_, esto se podría mitigar agregando alguna capa de dropout (como lo mencionan los dos artículos citados) y/o agregar capas de regularización. Es interestante mencionar que el validation accuracy no está tan descabeyado y que _test accuracy_ (93.3%) también muestra buen prospecto.
 
 #### Propuestas para el siguiente modelo
 - El modelo de Guo, X. & Polaina, L. F. (2018) propone utilizar una capa VGG-16, sería interesante añadirla al modelo y observar cómo se comporta
 - Cambiar RMSProp por Adam
+- Agregar capas de dropout y/o regularización
 
 ## Referencias:
 - Nantasenamat, C. (2020). _Building the Machine Learning Model_. Recuperado de: https://towardsdatascience.com/how-to-build-a-machine-learning-model-439ab8fb3fb1
