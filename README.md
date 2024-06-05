@@ -99,6 +99,7 @@ El tercer modelo es igualmente uno Secuencial Binario, consta de la siguientes c
 Al igual que el segundo modelo, los filtros de las capas Conv2D van de 10 -> 15.
 El _optimizer_ es nuevamente `Adam`.
 
+### Evaluación inicial
 Este modelo tuvo una ligera pérdida de _Accuracy_, con un 87.5% y un _F1 Score_ de 87%. A pesar de que empeoró el resultado, si analizamos _train loss_ (0.2824) contra _validation loss_ (0.4384)
 podemos inferir que aún se puede ajustar ligeramente el modelo para obtener mejores resultados, ya que no parece tener ni _overfitting_ ni _underfitting_.
 
