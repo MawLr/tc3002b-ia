@@ -59,14 +59,59 @@ Para este modelo inicial utilizamos:
 - Loss: Suma de errores cometidos por cada muestra en el set de entrenamiento. Toma en cuenta las probabilidades o incertidumbre de una predicción basada en qué tanto varía la predicción con el valor real.
 - RMSProp: Método de optimización. _Root Mean Square Propagation_ por sus siglas en inglés. Se decidió utilizar este optimizador con base en la publicación de López-Sánchez, M. et al. (2021) que compara el desempeño de SGD, RMSProp y Adam. Cabe mencionar que RMSProp fue el que tuvo resultados intermedios y Adam fue el que tuvo mejor desempeño, pero para este primer modelo utilizamos RMSProp como punto de partida.
 
-### Evaluación inicial:
-El modelo inicial nos arroja un _Accuracy_ de 88.99% y un Loss de 0.2935. A primera vista, y con base en lo reportado por Guo, X. & Polaina, L. F. (2018), nuestro modelo tiene un porcentaje de _Accuracy_ comparable con un modelo que utiliza _Raw Pixels_ como _Features_ y un _Classifier_ SVM, ya que este es de ±84%.
+### Evaluación inicial
+El modelo inicial nos arroja un _Accuracy_ de 92%% y un _F1 Score_ de 91%. A primera vista, y con base en lo reportado por Guo, X. & Polaina, L. F. (2018), nuestro modelo tiene un porcentaje de _Accuracy_ comparable con un modelo que utiliza _HOG (Labelled + unlabelled)_ como _Features_ y un _Classifier_ SVM, ya que este es de ±92%.
 
 Considerando que el _validation loss_ (0.2213) es similar al _train loss_ (0.2935) y que tanto _train accuracy_ (88.99%), _validation accuracy_ (90%) y _test accuracy_ (92.25%) son medianamente similares, podemos decir que el modelo parece haber sido entrenado de manera correcta. Cabe mencionar que quizá implementando algunas de las mejoras propuestas en los artículos citados el porcentaje de _accuracy_ podría subir, pero como primera iteración parece ir por buen camino.
 
 #### Propuestas para el siguiente modelo
-- El modelo de Guo, X. & Polaina, L. F. (2018) propone utilizar una capa VGG-16, sería interesante añadirla al modelo y observar cómo se comporta
 - Cambiar RMSProp por Adam
+
+## Segundo modelo
+El segundo es un modelo Secuencial Binario y consta de siete capas: 
+- 2 capas Conv2D utilizando `ReLu` como algoritmo de activación
+- 2 capas MaxPool2D metidas entre cada Conv2D
+- 1 capa de Flatten
+- 1 capa Densa de 64 nodos con activación `ReLu`
+- 1 capa Densa de 1 nodo (ya que es un modelo binario) con activación `sigmoid`
+
+La estructura es la misma a la del modelo inicial pero por propósitos de experimentación se reemplazó el _optimizer_ de `RMSprop` a `Adam`. Igualmente, en vez de tener 10 filtros en las dos capas Conv2D, empezamos 
+con 10 y la segunda capa continúa con 15. La capa densa pasó de 64 -> 128 perceptrones.
+
+### Evaluación inicial
+El modelo arroja resultados similares a los del primer modelo, con un _Accuracy_ de 90% y un _F1 Score_ de 89%. A primera vista no parece haber una mejoría significativa con los pequeños cambios hechos al modelo.
+
+El _validation loss_ es de 0.3588 y el _train loss_ es de 0.2353. 
+_Train accuracy_ es de 90%, _validation accuracy_ es de 90% y _test accuracy_ es de 90%.
+
+#### Propuestas para el siguiente modelo
+- El modelo de Guo, X. & Polaina, L. F. (2018) propone utilizar una capa VGG-16, sería interesante añadirla al modelo y observar cómo se comporta
+
+## Tercer modelo
+El tercer modelo es igualmente uno Secuencial Binario, consta de la siguientes capas:
+- 16 capas base VGG16 utilizando `imagenet` como _weights_
+- 2 capas Conv2D utilizando `ReLu` como algoritmo de activación
+- 2 capas MaxPool2D metidas entre cada Conv2D
+- 1 capa de Flatten
+- 1 capa Densa de 64 nodos con activación `ReLu`
+- 1 capa Densa de 1 nodo (ya que es un modelo binario) con activación `sigmoid`
+
+Al igual que el segundo modelo, los filtros de las capas Conv2D van de 10 -> 15.
+El _optimizer_ es nuevamente `Adam`.
+
+Este modelo tuvo una ligera pérdida de _Accuracy_, con un 87.5% y un _F1 Score_ de 87%. A pesar de que empeoró el resultado, si analizamos _train loss_ (0.2824) contra _validation loss_ (0.4384)
+podemos inferir que aún se puede ajustar ligeramente el modelo para obtener mejores resultados, ya que no parece tener ni _overfitting_ ni _underfitting_.
+
+Sería interesante si con suficiente poder de cómputo para hacer el entrenamiento de manera rápida se entrenaran las capas del VGG16, ya que en este modelo _trainable_ se estableció como _false_.
+
+## Evaluación final de los modelos
+
+| Modelo            | Accuracy | Precision | Recall | F1 Score |
+|-------------------|----------|-----------|--------|----------|
+| V1(CNN + RMSProp) | 92%      | 85%       | 100%   | 91%      |
+| V2(CNN + Adam)    | 90%      | 85%       | 94%    | 89%      |
+| V3(CNN + VGG16)   | 87.5%    | 85%       | 89%    | 87%      |
+|-------------------|----------|-----------|--------|----------|
 
 ## Referencias:
 - Nantasenamat, C. (2020). _Building the Machine Learning Model_. Recuperado de: https://towardsdatascience.com/how-to-build-a-machine-learning-model-439ab8fb3fb1
