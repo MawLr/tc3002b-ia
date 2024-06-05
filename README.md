@@ -106,11 +106,18 @@ Sería interesante si con suficiente poder de cómputo para hacer el entrenamien
 
 ## Evaluación final de los modelos
 
-| Modelo            | Accuracy | Precision | Recall | F1 Score |
-|-------------------|----------|-----------|--------|----------|
-| V1(CNN + RMSProp) | 92%      | 85%       | 100%   | 91%      |
-| V2(CNN + Adam)    | 90%      | 85%       | 94%    | 89%      |
-| V3(CNN + VGG16)   | 87.5%    | 85%       | 89%    | 87%      |
+| Modelo                    | Accuracy | Precision | Recall | F1 Score |
+|---------------------------|----------|-----------|--------|----------|
+| V1(CNN + RMSProp)         | 92%      | 85%       | 100%   | 91%      |
+| V2(CNN + Adam)            | 90%      | 85%       | 94%    | 89%      |
+| V3(CNN + VGG16 + Adam)    | 87.5%    | 85%       | 89%    | 87%      |
+
+En conclusión, el modelo inicial fue el que obtuvo los mejores resultados, quizá porque es el que menos parámetros utilizó (puesto que tenía menos filtros que los demás en las capas Conv2D).
+La complejidad de agregar 16 capas adicionales puede que haya influído en el notable cambio de _Accuracy_ en el tercer modelo.
+
+Es importante mencionar que el _Recall_ del 100% en el modelo V1 significa que no tuvo falsos negativos, por lo que podemos decir que tiene una alta sensibilidad para detectar casos positivos.
+También cabe destacar que aunque López-Sánchez, M. et al. (2021) proponen que el mejor optimizador para CNNs es `Adam`, hay ciertamente ocasiones donde considerar alternativas como `RMSProp` pueden
+influir de manera positiva al modelo, como lo fue en el caso del V1.
 
 ## Referencias:
 - Nantasenamat, C. (2020). _Building the Machine Learning Model_. Recuperado de: https://towardsdatascience.com/how-to-build-a-machine-learning-model-439ab8fb3fb1
