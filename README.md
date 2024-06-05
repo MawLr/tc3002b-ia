@@ -2,6 +2,7 @@
 José Manuel Medina - A01706212
 
 **IMPORTANTE:** El dataset se encuntra en la siguiente carpeta de Google Drive: https://drive.google.com/drive/folders/1YqglgSbqy-tzIgb09LAQ0RlwOYUm0TtO?usp=sharing
+
 **IMPORTANTE X2:** El _notebook_ con todos los modelos se encuentra en el archivo `modelo_base_smile_final.ipynb`.
 
 # Modelo de detección de sonrisas en caras humanas
