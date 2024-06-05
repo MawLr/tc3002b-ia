@@ -111,7 +111,6 @@ Sería interesante si con suficiente poder de cómputo para hacer el entrenamien
 | V1(CNN + RMSProp) | 92%      | 85%       | 100%   | 91%      |
 | V2(CNN + Adam)    | 90%      | 85%       | 94%    | 89%      |
 | V3(CNN + VGG16)   | 87.5%    | 85%       | 89%    | 87%      |
-|-------------------|----------|-----------|--------|----------|
 
 ## Referencias:
 - Nantasenamat, C. (2020). _Building the Machine Learning Model_. Recuperado de: https://towardsdatascience.com/how-to-build-a-machine-learning-model-439ab8fb3fb1
